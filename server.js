@@ -57,6 +57,105 @@ app.delete('/campsites/:campsiteId', (req, res) => {
     res.end(`Deleting campsite: ${req.params.campsiteId}`);
 });
 
+
+
+
+
+app.all('/partners', (req, res, next) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    next();
+});
+app.get('/partners', (req, res) => {
+    res.end('Will send all the partners to you');
+});
+
+app.post('/partners', (req, res) => {
+    res.end(`Will add the partner: ${req.body.name} with description: ${req.body.description}`);
+});
+
+app.put('/partners', (req, res) => {
+    res.statusCode = 403;
+    res.end('PUT operation not supported on /partners');
+});
+
+app.delete('/partners', (req, res) => {
+    res.end('Deleting all partnerss');
+});
+
+app.get('/partners/:partnerId', (req, res) => {
+    res.end(`Will send details of the partners: ${req.params.partnerId} to you`);
+});
+
+app.post('/partners/:partnerId', (req, res) => {
+    res.statusCode = 403;
+    res.end(`POST operation not supported on /partners/${req.params.partnerId}`);
+});
+
+app.put('/partners/:partnerId', (req, res) => {
+    res.write(`Updating partners: ${req.params.partnerId}\n`);
+    res.end(`Will update partners: ${req.body.name}
+        with description: ${req.body.description}`);
+});
+
+app.delete('/partners/:partnerId', (req, res) => {
+    res.end(`Deleting partners: ${req.params.partnerId}`);
+});
+
+
+
+
+
+
+
+
+app.all('/promotions', (req, res, next) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    next();
+});
+app.get('/promotions', (req, res) => {
+    res.end('Will send all the promotions to you');
+});
+
+app.post('/promotions', (req, res) => {
+    res.end(`Will add promotions: ${req.body.name} with description: ${req.body.description}`);
+});
+
+app.put('/promotions', (req, res) => {
+    res.statusCode = 403;
+    res.end('PUT operation not supported on /promotions');
+});
+
+app.delete('/promotions', (req, res) => {
+    res.end('Deleting all promotions');
+});
+
+app.get('/promotionss/:promotionId', (req, res) => {
+    res.end(`Will send details of promotions: ${req.params.promotionId} to you`);
+});
+
+app.post('/promotions/:promotionId', (req, res) => {
+    res.statusCode = 403;
+    res.end(`POST operation not supported on /promotions/${req.params.promotionId}`);
+});
+
+app.put('/promotions/:promotionId', (req, res) => {
+    res.write(`Updating promotions: ${req.params.promotionId}\n`);
+    res.end(`Will update promotions: ${req.body.name}
+        with description: ${req.body.description}`);
+});
+
+app.delete('/promotions/:promotionId', (req, res) => {
+    res.end(`Deleting promotions: ${req.params.promotionId}`);
+});
+
+
+
+
+
+
+
 app.use(express.static(__dirname + '/public'));
 
 app.use((req, res) => {
